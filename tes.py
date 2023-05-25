@@ -17,6 +17,19 @@ df["order_year"] = df["order_date"].dt.year
 CURR_YEAR = df["order_year"].max()
 PREV_YEAR = CURR_YEAR - 1
 
+mx_data = pd.pivot_table(
+    data = df,
+    index = "order_year",
+    aggfunc = {
+        "sales":np.sum,
+        "profit":np.sum,
+        "order_id":pd.Series.nunique,
+        "customer_id":pd.Series.nunique,
+    }
+).reset_index()
+
+mx_data["profit_ratio"] = 100.0 * mx_data["profit"] / mx_data["sales"]
+
 with mx_sales:
     curr_sales = mx_data.loc[mx_data["order_year"] == CURR_YEAR, "sales"].values[0]
     prev_sales = mx_data.loc[mx_data["order_year"] == PREV_YEAR, "sales"].values[0]
