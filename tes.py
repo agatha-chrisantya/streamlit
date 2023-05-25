@@ -21,4 +21,5 @@ with mx_sales:
         label = "Sales",
         value = curr_sales,
         delta = f"{sales_diff_pct:.2f}"
+    )
 
