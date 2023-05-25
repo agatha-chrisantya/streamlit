@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page title = "Super Store Dashboard",
+    page_title = "Super Store Dashboard",
     layout = "wide"
 )
 
