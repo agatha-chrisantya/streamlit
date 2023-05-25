@@ -31,6 +31,8 @@ mx_data = pd.pivot_table(
 
 mx_data["profit_ratio"] = 100.0 * mx_data["profit"] / mx_data["sales"]
 
+mx_sales = st.columns(1)
+
 with mx_sales:
     curr_sales = mx_data.loc[mx_data["order_year"] == CURR_YEAR, "sales"].values[0]
     prev_sales = mx_data.loc[mx_data["order_year"] == PREV_YEAR, "sales"].values[0]
